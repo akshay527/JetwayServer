@@ -1,1 +1,15 @@
-This README file provides the necessary details for accessing measurement results
+This README file provides the necessary details for accessing measurement results. It is only relevant
+to those using the feature.isri.cmu.edu/measurement database for reading and writing test results.
+
+ Measurement:
+ 
+ This database is comprised of several different tables, as outlined below:
+ 
+ 1) Configurations - this table consists of the different configurations of options that are available to test.
+ 2) MResults - this table consists of the experiment results written by Jetway Clients.
+ 3) NFP - this table lists the types of features that are being measured and stored in the database (Time, Power, CPU, etc.).
+ 4) Program - (unused)
+ 5) Result - (unused)
+ 6) Series - this table consists of the different trial numbers and benchmarks upon which experiments have been performed
+ 7) Todos - this table is used as a queue for Jetway Clients to pull tasks from. Once an experiment in the Todos has been
+            performed, the result is written into MResults.
