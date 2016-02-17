@@ -6,10 +6,57 @@ to those using the feature.isri.cmu.edu/measurement database for reading and wri
  This database is comprised of several different tables, as outlined below:
  
  1) Configurations - this table consists of the different configurations of options that are available to test.
+                     ConfigurationID 
  2) MResults - this table consists of the experiment results written by Jetway Clients.
  3) NFP - this table lists the types of features that are being measured and stored in the database (Time, Power, CPU, etc.).
  4) Program - (unused)
  5) Result - (unused)
- 6) Series - this table consists of the different trial numbers and benchmarks upon which experiments have been performed
+ 6) Series - this table consists of the different trial numbers and benchmarks upon which experiments have been performed.
+             The general format is SERIES_1{a-e}, where SERIES is the series name, and {a-e} are different trial runs.
  7) Todos - this table is used as a queue for Jetway Clients to pull tasks from. Once an experiment in the Todos has been
             performed, the result is written into MResults.
+
+  Data:
+  
+  The series that are particularly relevant for looking at are kmeans_1*, particle_filter_new_1*, srad_1* because they 
+  demonstrate the benefits of multithreading most clearly.
+  
+  The format for checking a value is a bit difficult to explain, so I will use an example:
+  
+  
+  EXAMPLE 1 
+ 
+  MySQL Command: "SELECT * FROM MResults WHERE SeriesID = 34 AND NFPID = 40"
+  
+  NFPID = 40 : Run Power
+  SeriesID = 34 : kmeans_1a
+  
+  OUTPUT = All execution power values and their configurationIDs that have been tested for kmeans_1a.
+  
+  EXAMPLE 2
+  
+  MySQL Command: "SELECT * FROM MResults WHERE SeriesID = 32 AND NFPID = 77"
+  
+  Notes:
+  
+  NFPID = 77 : Run Time
+  SeriesID = 32 : particle_filter_1a
+  
+  OUTPUT = All run time values and their configurationIDs that have been tested for particle_filter_1a.
+  
+  Compile-Power = the average power (mW) that the system used during compilation
+  Run-Power = the average power (mW) that the system used during execution
+  
+  Compile-CPU = the CPU utilization (%) that the system used during compilation
+  Run-CPU = the CPU utilization (%) that the system used during execution
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
