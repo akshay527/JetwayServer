@@ -23,26 +23,41 @@ to those using the feature.isri.cmu.edu/measurement database for reading and wri
   
   The format for checking a value is a bit difficult to explain, so I will use an example:
   
-  
   EXAMPLE 1 
  
-  MySQL Command: "SELECT * FROM MResults WHERE SeriesID = 34 AND NFPID = 40"
+  MySQL Command: "SELECT * FROM MResults WHERE SeriesID = 14 AND NFPID = 40"
   
   NFPID = 40 : Run Power
-  SeriesID = 34 : kmeans_1a
+  SeriesID = 14 : kmeans_1a
   
-  OUTPUT = All execution power values and their configurationIDs that have been tested for kmeans_1a.
+  OUTPUT = All execution power values and their configurationIDs that have been tested for kmeans_1a:
+
+  ConfigID SeriesID NFPID Value
+  377468	14	40	20847.492187
+  377271	14	40	17589.179625
+  377270	14	40	17874.5587917
+  377269	14	40	19256.0434615
+  377243	14	40	18426.464575
+  ...
   
   EXAMPLE 2
   
-  MySQL Command: "SELECT * FROM MResults WHERE SeriesID = 32 AND NFPID = 77"
-  
+  MySQL Command: "SELECT * FROM MResults WHERE SeriesID = 17 AND NFPID = 77"
+ 
   Notes:
   
   NFPID = 77 : Run Time
-  SeriesID = 32 : particle_filter_1a
+  SeriesID = 17 : particle_filter_new_1a
   
   OUTPUT = All run time values and their configurationIDs that have been tested for particle_filter_1a.
+  
+  ConfigID SeriesID NFPID Value
+  372192	17	77	24.16
+  372193	17	77	16.91
+  372194	17	77	18.73
+  372195	17	77	16.02
+  372197	17	77	16.94
+  ...
   
   Compile-Power = the average power (mW) that the system used during compilation
   Run-Power = the average power (mW) that the system used during execution
